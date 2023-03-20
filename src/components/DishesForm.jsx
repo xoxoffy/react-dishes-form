@@ -3,8 +3,16 @@ import { Form, Field } from 'react-final-form';
 import './DishesForm.css';
 
 const DishesForm = () => {
+  const initialValues = {
+    preparation_time: '00:59:59',
+    name: 'HexOcean Pizza',
+    type: 'pizza',
+    no_of_slices: '1',
+    diameter: '1',
+  };
+
   const onSubmit = (event) => {
-    debugger;
+    return null;
   };
 
   const validate = (values) => {
@@ -22,6 +30,7 @@ const DishesForm = () => {
       <Form
         onSubmit={onSubmit}
         validate={validate}
+        initialValues={initialValues}
         render={({ handleSubmit }) => (
           <form onSubmit={handleSubmit}>
             <div className="field">
