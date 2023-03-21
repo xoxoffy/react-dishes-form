@@ -6,7 +6,6 @@
 
 .field {
   background-color: #20222b;
-  background-repeat: no-repeat;
   border-color: #eee;
   border-width: 2px;
   border-radius: 10px;
@@ -32,4 +31,9 @@ label {
 
 button {
   padding: 10px 15px;
+  background-color: #eee;
+
+  border-color: #20222b;
+  border-width: 2px;
+  border-radius: 10px;
 }

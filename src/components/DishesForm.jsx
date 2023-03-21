@@ -11,8 +11,28 @@ const DishesForm = () => {
     diameter: '1',
   };
 
-  const onSubmit = (event) => {
-    return null;
+  const onSubmit = async (values) => {
+    const abortController = new AbortController();
+    let url = 'localhost';
+    fetch(url, {
+      signal: abortController.signal,
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(values),
+    })
+      .then((res) => {
+        if (!res.ok) {
+          throw Error('Could not fetch the data');
+        }
+        return res.json();
+      })
+      .catch((err) => {
+        if (err.name === 'AbortError') {
+          console.log('Fetch aborted');
+        } else {
+          console.log(err.message);
+        }
+      });
   };
 
   const validate = (values) => {
@@ -80,9 +100,9 @@ const DishesForm = () => {
                   <input
                     {...input}
                     className="field"
-                    type="time"
+                    type="text"
                     step="1"
-                    placeholder="Preparation Time"
+                    placeholder="hours:seconds:miliseconds"
                   />
                   <div className="validationError">
                     {meta.error && meta.touched && <span>{meta.error}</span>}
@@ -123,6 +143,7 @@ const DishesForm = () => {
                       <label>No Of Slices</label>
                       <input
                         {...input}
+                        className="field"
                         type="number"
                         placeholder="No Of Slices"
                         step="1"
@@ -135,7 +156,12 @@ const DishesForm = () => {
                   {({ input, meta }) => (
                     <div>
                       <label>Diameter</label>
-                      <input {...input} type="number" placeholder="Diameter" />
+                      <input
+                        {...input}
+                        className="field"
+                        type="number"
+                        placeholder="Diameter"
+                      />
                       {meta.error && meta.touched && <span>{meta.error}</span>}
                     </div>
                   )}
@@ -149,6 +175,7 @@ const DishesForm = () => {
                     <label>Spiciness Scale</label>
                     <input
                       {...input}
+                      className="field"
                       type="number"
                       placeholder="Spiciness Scale"
                     />
@@ -164,6 +191,7 @@ const DishesForm = () => {
                     <label>Slices Of Bread</label>
                     <input
                       {...input}
+                      className="field"
                       type="number"
                       placeholder="Slices Of Bread"
                     />
@@ -173,10 +201,15 @@ const DishesForm = () => {
               </Field>
             )}
             <div className="buttons">
-              <button type="submit" /*disabled={submitting || pristine}*/>
+              <button
+                variant="outlined"
+                type="submit"
+                disabled={submitting || pristine}
+              >
                 Submit
               </button>
               <button
+                variant="outlined"
                 type="button"
                 onClick={form.reset}
                 disabled={submitting || pristine}
