@@ -93,12 +93,14 @@ const DishesForm = () => {
               pristine={pristine}
               form={form}
             />
+
             <pre>{JSON.stringify(values, 0, 2)}</pre>
           </form>
         )}
       />
     </div>
   );
+  //CR
 };
 
 export default DishesForm;
