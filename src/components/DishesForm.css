@@ -32,8 +32,18 @@ label {
 button {
   padding: 10px 15px;
   background-color: #eee;
-
   border-color: #20222b;
   border-width: 2px;
   border-radius: 10px;
+}
+
+input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-indent: 1px;
+  text-overflow: '';
 }

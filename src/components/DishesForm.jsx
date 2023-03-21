@@ -1,7 +1,12 @@
-import React from 'react';
-import { Form, Field } from 'react-final-form';
+import { Fragment } from 'react';
+import { Form } from 'react-final-form';
 import './DishesForm.css';
-import { OnChange } from 'react-final-form-listeners';
+import PizzaVariant from './DishVariants/PizzaVariant';
+import SoupVariant from './DishVariants/SoupVariant';
+import BreadVariant from './DishVariants/BreadVariant';
+import DishesButtons from './DishesButtons';
+import DishType from './DishType';
+import DishFields from './DishFields';
 
 const DishesForm = () => {
   const initialValues = {
@@ -76,147 +81,18 @@ const DishesForm = () => {
         }}
         render={({ handleSubmit, form, submitting, pristine, values }) => (
           <form className="formContainer" onSubmit={handleSubmit}>
-            <Field name="name">
-              {({ input, meta }) => (
-                <div>
-                  <label>Name</label>
-                  <input
-                    {...input}
-                    className="field"
-                    type="text"
-                    placeholder="Dish Name"
-                  />
-
-                  <div className="validationError">
-                    {meta.error && meta.touched && <span>{meta.error}</span>}
-                  </div>
-                </div>
-              )}
-            </Field>
-            <Field name="preparation_time">
-              {({ input, meta }) => (
-                <div>
-                  <label>Preparation Time </label>
-                  <input
-                    {...input}
-                    className="field"
-                    type="text"
-                    step="1"
-                    placeholder="hours:seconds:miliseconds"
-                  />
-                  <div className="validationError">
-                    {meta.error && meta.touched && <span>{meta.error}</span>}
-                  </div>
-                </div>
-              )}
-            </Field>
-            <div>
-              <Field name="type">
-                {({ input, meta }) => (
-                  <div>
-                    <label>Type</label>
-                    <select {...input} className="field" placeholder="name">
-                      <option value="pizza"> pizza </option>
-                      <option value="soup"> soup</option>
-                      <option value="sandwich"> sandwich</option>
-                    </select>
-                    <div className="validationError">
-                      {meta.error && meta.touched && <span>{meta.error}</span>}
-                    </div>
-                  </div>
-                )}
-              </Field>
-              <OnChange name="type">
-                {() => {
-                  form.mutators.setValue('no_of_slices', undefined);
-                  form.mutators.setValue('diameter', undefined);
-                  form.mutators.setValue('spiciness_scale', undefined);
-                  form.mutators.setValue('slices_of_bread', undefined);
-                }}
-              </OnChange>
-            </div>
-            {values.type === 'pizza' && (
-              <div>
-                <Field name="no_of_slices">
-                  {({ input, meta }) => (
-                    <div>
-                      <label>No Of Slices</label>
-                      <input
-                        {...input}
-                        className="field"
-                        type="number"
-                        placeholder="No Of Slices"
-                        step="1"
-                      />
-                      {meta.error && meta.touched && <span>{meta.error}</span>}
-                    </div>
-                  )}
-                </Field>
-                <Field name="diameter">
-                  {({ input, meta }) => (
-                    <div>
-                      <label>Diameter</label>
-                      <input
-                        {...input}
-                        className="field"
-                        type="number"
-                        placeholder="Diameter"
-                      />
-                      {meta.error && meta.touched && <span>{meta.error}</span>}
-                    </div>
-                  )}
-                </Field>
-              </div>
-            )}
-            {values.type === 'soup' && (
-              <Field name="spiciness_scale">
-                {({ input, meta }) => (
-                  <div>
-                    <label>Spiciness Scale</label>
-                    <input
-                      {...input}
-                      className="field"
-                      type="number"
-                      placeholder="Spiciness Scale"
-                    />
-                    {meta.error && meta.touched && <span>{meta.error}</span>}
-                  </div>
-                )}
-              </Field>
-            )}
-            {values.type === 'sandwich' && (
-              <Field name="slices_of_bread">
-                {({ input, meta }) => (
-                  <div>
-                    <label>Slices Of Bread</label>
-                    <input
-                      {...input}
-                      className="field"
-                      type="number"
-                      placeholder="Slices Of Bread"
-                    />
-                    {meta.error && meta.touched && <span>{meta.error}</span>}
-                  </div>
-                )}
-              </Field>
-            )}
-            <div className="buttons">
-              <button
-                variant="outlined"
-                type="submit"
-                disabled={submitting || pristine}
-              >
-                Submit
-              </button>
-              <button
-                variant="outlined"
-                type="button"
-                onClick={form.reset}
-                disabled={submitting || pristine}
-              >
-                Reset
-              </button>
-            </div>
+            <DishFields />
+            <DishType form={form} />
+            <Fragment>
+              {values.type === 'pizza' && <PizzaVariant />}
+              {values.type === 'soup' && <SoupVariant />}
+              {values.type === 'sandwich' && <BreadVariant />}
+            </Fragment>
+            <DishesButtons
+              submitting={submitting}
+              pristine={pristine}
+              form={form}
+            />
             <pre>{JSON.stringify(values, 0, 2)}</pre>
           </form>
         )}

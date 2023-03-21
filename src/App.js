@@ -1,4 +1,3 @@
-import { Container } from '@mui/material';
 import './App.css';
 import DishesForm from './components/DishesForm';
 
@@ -8,9 +7,9 @@ function App() {
       <header>
         <h1>Your Dish Form</h1>
       </header>
-      <Container maxWidth="sm">
+      <section>
         <DishesForm />
-      </Container>
+      </section>
     </div>
   );
 }
