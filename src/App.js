@@ -4,7 +4,7 @@ import DishesForm from './components/DishesForm';
 function App() {
   return (
     <div className="App">
-      <h1>Dishes Form</h1>
+      <h1>Your Dish Form</h1>
       <DishesForm />
     </div>
   );
