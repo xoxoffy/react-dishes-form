@@ -100,7 +100,7 @@ const DishesForm = () => {
       />
     </div>
   );
-  //CR
+  //PR
 };
 
 export default DishesForm;
