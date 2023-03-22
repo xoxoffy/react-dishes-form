@@ -1,12 +1,12 @@
 import { Fragment } from 'react';
 import { Form } from 'react-final-form';
 import './DishesForm.css';
-import PizzaVariant from './DishVariants/PizzaVariant';
-import SoupVariant from './DishVariants/SoupVariant';
-import BreadVariant from './DishVariants/BreadVariant';
-import DishesButtons from './DishesButtons';
-import DishType from './DishType';
-import DishFields from './DishFields';
+import DishesButtons from './components/DishesButtons/DishesButtons';
+import DishType from './components/DishType/DishType';
+import DishFields from './components/DishFields/DishFields';
+import PizzaVariant from './components/DishVariants/PizzaVariant';
+import SoupVariant from './components/DishVariants/SoupVariant';
+import BreadVariant from './components/DishVariants/BreadVariant';
 
 const DishesForm = () => {
   const initialValues = {
@@ -100,7 +100,6 @@ const DishesForm = () => {
       />
     </div>
   );
-  //CR
 };
 
 export default DishesForm;

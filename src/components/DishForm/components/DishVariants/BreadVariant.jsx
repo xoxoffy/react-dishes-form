@@ -1,19 +1,19 @@
 import React from 'react';
 import { Field } from 'react-final-form';
-import ValidationError from './../ValidationError';
+import ValidationError from '../../../ValidationError';
 
-const SoupVariant = () => {
+const BreadVariant = () => {
   return (
     <div>
-      <Field name="spiciness_scale">
+      <Field name="slices_of_bread">
         {({ input, meta }) => (
           <div>
-            <label>Spiciness Scale</label>
+            <label>Slices Of Bread</label>
             <input
               {...input}
               className="field"
               type="number"
-              placeholder="Spiciness Scale"
+              placeholder="Slices Of Bread"
             />
             <ValidationError meta={meta} />
           </div>
@@ -23,4 +23,4 @@ const SoupVariant = () => {
   );
 };
 
-export default SoupVariant;
+export default BreadVariant;

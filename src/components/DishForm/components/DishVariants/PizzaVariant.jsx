@@ -1,6 +1,6 @@
 import { Fragment } from 'react';
 import { Field } from 'react-final-form';
-import ValidationError from './../ValidationError';
+import ValidationError from '../../../ValidationError';
 
 const PizzaVariant = () => {
   return (

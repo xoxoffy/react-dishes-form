@@ -1,5 +1,5 @@
 import './App.css';
-import DishesForm from './components/DishesForm';
+import DishesForm from './components/DishForm/DishesForm';
 
 function App() {
   return (
