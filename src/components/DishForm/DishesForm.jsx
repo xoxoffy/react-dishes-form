@@ -18,7 +18,7 @@ const DishesForm = () => {
 
   const onSubmit = async (values) => {
     const abortController = new AbortController();
-    let url = 'localhost';
+    const url = 'https://frosty-wood-6558.getsandbox.com:443/dishes';
     fetch(url, {
       signal: abortController.signal,
       method: 'POST',
@@ -49,15 +49,23 @@ const DishesForm = () => {
     if (!values.preparation_time) {
       errors.preparation_time = 'This field is required';
     }
-
+    if (values.preparation_time <= 0) {
+      errors.preparation_time = 'Please enter a valid number';
+    }
     if (!values.type) {
       errors.type = 'This field is required';
     } else if (values.type === 'pizza') {
       if (!values.no_of_slices) {
         errors.no_of_slices = 'This field is required';
       }
+      if (values.no_of_slices <= 0) {
+        errors.no_of_slices = 'Please enter a valid number';
+      }
       if (!values.diameter) {
         errors.diameter = 'This field is required';
+      }
+      if (values.diameter <= 0) {
+        errors.diameter = 'Please entered a valid number';
       }
     } else if (values.type === 'soup') {
       if (!values.spicyness_scale) {
