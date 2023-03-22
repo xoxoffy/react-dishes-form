@@ -100,6 +100,10 @@ const DishesForm = () => {
       />
     </div>
   );
+<<<<<<< HEAD:src/components/DishForm/DishesForm.jsx
+=======
+  //PR
+>>>>>>> a521d4858043d59bf7a98feb0c832d99f4dc6402:src/components/DishesForm.jsx
 };
 
 export default DishesForm;
