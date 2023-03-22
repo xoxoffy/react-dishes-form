@@ -7,30 +7,30 @@ const DishFields = () => {
     <Fragment>
       <Field name="name">
         {({ input, meta }) => (
-          <div>
+          <div className="dishContainer">
             <label>Name</label>
+            <ValidationError meta={meta} />
             <input
               {...input}
               className="field"
               type="text"
               placeholder="Dish Name"
             />
-            <ValidationError meta={meta} />
           </div>
         )}
       </Field>
       <Field name="preparation_time">
         {({ input, meta }) => (
-          <div>
-            <label>Preparation Time </label>
+          <div className="dishContainer">
+            <label>Preparation Time</label>
+            <ValidationError meta={meta} />
             <input
               {...input}
               className="field"
               type="text"
               step="1"
-              placeholder="hh/ss/ms"
+              placeholder="hs/min/sec"
             />
-            <ValidationError meta={meta} />
           </div>
         )}
       </Field>

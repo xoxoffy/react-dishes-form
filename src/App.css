@@ -1,12 +1,12 @@
 .App {
-  margin: 0 auto;
-  width: 50%;
-  background-color: #20222b;
   padding: 5px 15px;
-  border-radius: 15px;
+  background-image: url('../public/images/vegetables.jpg');
+  background-size: 2300px;
 }
 
 h1 {
   color: whitesmoke;
+  font-size: 4rem;
   text-align: center;
+  text-shadow: 5px 5px #000000;
 }

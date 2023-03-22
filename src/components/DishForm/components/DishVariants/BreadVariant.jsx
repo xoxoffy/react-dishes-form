@@ -7,15 +7,15 @@ const BreadVariant = () => {
     <div>
       <Field name="slices_of_bread">
         {({ input, meta }) => (
-          <div>
+          <div className="dishContainer">
             <label>Slices Of Bread</label>
+            <ValidationError meta={meta} />
             <input
               {...input}
               className="field"
               type="number"
               placeholder="Slices Of Bread"
             />
-            <ValidationError meta={meta} />
           </div>
         )}
       </Field>

@@ -21,7 +21,7 @@ const DishType = ({ form }) => {
         {() => {
           form.mutators.setValue('no_of_slices');
           form.mutators.setValue('diameter');
-          form.mutators.setValue('spiciness_scale');
+          form.mutators.setValue('spicyness_scale');
           form.mutators.setValue('slices_of_bread');
         }}
       </OnChange>

@@ -5,17 +5,17 @@ import ValidationError from '../../../ValidationError';
 const SoupVariant = () => {
   return (
     <div>
-      <Field name="spiciness_scale">
+      <Field name="spicyness_scale">
         {({ input, meta }) => (
-          <div>
-            <label>Spiciness Scale</label>
+          <div className="dishContainer">
+            <label>Spicyness Scale</label>
+            <ValidationError meta={meta} />
             <input
               {...input}
               className="field"
               type="number"
-              placeholder="Spiciness Scale"
+              placeholder="Spicyness Scale"
             />
-            <ValidationError meta={meta} />
           </div>
         )}
       </Field>

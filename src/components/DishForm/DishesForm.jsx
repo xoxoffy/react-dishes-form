@@ -41,27 +41,37 @@ const DishesForm = () => {
   };
 
   const validate = (values) => {
-    console.log('validate', values);
     const errors = {};
+
     if (!values.name) {
-      errors.name = 'Required';
+      errors.name = 'This field is required';
     }
+    if (!values.preparation_time) {
+      errors.preparation_time = 'This field is required';
+    }
+
     if (!values.type) {
-      errors.type = 'Required';
+      errors.type = 'This field is required';
     } else if (values.type === 'pizza') {
       if (!values.no_of_slices) {
-        errors.no_of_slices = 'Required';
+        errors.no_of_slices = 'This field is required';
       }
       if (!values.diameter) {
-        errors.diameter = 'Required';
+        errors.diameter = 'This field is required';
       }
     } else if (values.type === 'soup') {
-      if (!values.spiciness_scale) {
-        errors.spiciness_scale = 'Required';
+      if (!values.spicyness_scale) {
+        errors.spicyness_scale = 'This field is required';
+      }
+      if (values.spicyness_scale < 0) {
+        errors.spicyness_scale = 'Please enter a valid number';
       }
     } else if (values.type === 'sandwich') {
       if (!values.slices_of_bread) {
-        errors.slices_of_bread = 'Required';
+        errors.slices_of_bread = 'This field is required';
+      }
+      if (values.slices_of_bread <= 0) {
+        errors.slices_of_bread = 'Please enter a valid number';
       }
     }
 
@@ -93,8 +103,6 @@ const DishesForm = () => {
               pristine={pristine}
               form={form}
             />
-
-            <pre>{JSON.stringify(values, 0, 2)}</pre>
           </form>
         )}
       />

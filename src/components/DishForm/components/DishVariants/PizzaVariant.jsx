@@ -7,8 +7,9 @@ const PizzaVariant = () => {
     <Fragment>
       <Field name="no_of_slices">
         {({ input, meta }) => (
-          <Fragment>
+          <div className="dishContainer">
             <label>No Of Slices</label>
+            <ValidationError meta={meta} />
             <input
               {...input}
               className="field"
@@ -16,22 +17,21 @@ const PizzaVariant = () => {
               placeholder="No Of Slices"
               step="1"
             />
-            <ValidationError meta={meta} />
-          </Fragment>
+          </div>
         )}
       </Field>
       <Field name="diameter">
         {({ input, meta }) => (
-          <Fragment>
+          <div className="dishContainer">
             <label>Diameter</label>
+            <ValidationError meta={meta} />
             <input
               {...input}
               className="field"
               type="number"
               placeholder="Diameter"
             />
-            <ValidationError meta={meta} />
-          </Fragment>
+          </div>
         )}
       </Field>
     </Fragment>
